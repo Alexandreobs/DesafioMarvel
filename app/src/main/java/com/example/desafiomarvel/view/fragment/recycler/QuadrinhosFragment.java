@@ -4,17 +4,34 @@ package com.example.desafiomarvel.view.fragment.recycler;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.desafiomarvel.R;
+import com.example.desafiomarvel.model.pojos.Result;
+import com.example.desafiomarvel.view.adapter.QuadrinhosAdapter;
+import com.example.desafiomarvel.view.onclink.ComicsOnClick;
+import com.example.desafiomarvel.viewmodel.QuadrinhosViewModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class QuadrinhosFragment extends Fragment {
+public class QuadrinhosFragment extends Fragment implements ComicsOnClick {
+
+    private List<Result> results = new ArrayList<>();
+    private QuadrinhosViewModel viewModel;
+    private RecyclerView recyclerView;
+    private QuadrinhosAdapter adapter;
+
+
 
 
     public QuadrinhosFragment() {
@@ -26,7 +43,36 @@ public class QuadrinhosFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_quadrinhos, container, false);
+        View view = inflater.inflate(R.layout.fragment_quadrinhos, container, false);
+
+        initViews(view);
+
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+
+
+        viewModel.getComics();
+        viewModel.getListaComics().observe(this, results1 -> {
+            adapter.atualizaLista(results1);
+
+        });
+
+
+
+        return view;
     }
 
+    private void initViews(View view) {
+        recyclerView = view.findViewById(R.id.recycler_Quadrinhos);
+        viewModel = ViewModelProviders.of(this).get(QuadrinhosViewModel.class);
+        adapter = new QuadrinhosAdapter(results, this);
+
+
+    }
+
+
+    @Override
+    public void comicsOnClick(Result result) {
+
+    }
 }

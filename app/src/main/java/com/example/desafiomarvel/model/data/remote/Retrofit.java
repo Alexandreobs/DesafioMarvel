@@ -15,7 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Retrofit {
 
-    private static final String BASE_URL = "https://gateway.marvel.com:443/v1/public";
+    private static final String BASE_URL = "https://gateway.marvel.com:443/v1/public/";
     private static retrofit2.Retrofit retrofit;
 
     private static retrofit2.Retrofit getRetrofit() {
@@ -50,8 +50,8 @@ public class Retrofit {
     }
 
     // Retornamos a api criada com o retrofit
-    public static MarvelAPI getApiService() {
-        return getRetrofit().create(MarvelAPI.class);
+    public static MarvelApi getApiService() {
+        return getRetrofit().create(MarvelApi.class);
     }
 }
 
