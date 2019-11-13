@@ -76,8 +76,7 @@ public class QuadrinhosAdapter extends RecyclerView.Adapter <QuadrinhosAdapter.V
         }
 
         public void onBind(Result result) {
-            Picasso.get().load("http://i.annihil.us/u/prod/marvel/i/mg/3/40/4bb4680432f73" + result.getImages()).into(poster);
-
+            Picasso.get().load(result.getThumbnail().getPath() + ".jpg").into(poster);
             titulo.setText(result.getTitle());
 
         }

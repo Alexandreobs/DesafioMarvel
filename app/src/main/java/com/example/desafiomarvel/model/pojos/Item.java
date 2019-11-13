@@ -4,7 +4,6 @@ package com.example.desafiomarvel.model.pojos;
 import com.google.gson.annotations.Expose;
 
 
-@SuppressWarnings("unused")
 public class Item {
 
     @Expose

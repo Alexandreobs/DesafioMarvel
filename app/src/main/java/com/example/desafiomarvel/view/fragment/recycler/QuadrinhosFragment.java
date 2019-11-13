@@ -34,6 +34,7 @@ public class QuadrinhosFragment extends Fragment implements ComicsOnClick {
 
 
 
+
     public QuadrinhosFragment() {
         // Required empty public constructor
     }
@@ -44,6 +45,7 @@ public class QuadrinhosFragment extends Fragment implements ComicsOnClick {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_quadrinhos, container, false);
+
 
         initViews(view);
 
@@ -66,8 +68,6 @@ public class QuadrinhosFragment extends Fragment implements ComicsOnClick {
         recyclerView = view.findViewById(R.id.recycler_Quadrinhos);
         viewModel = ViewModelProviders.of(this).get(QuadrinhosViewModel.class);
         adapter = new QuadrinhosAdapter(results, this);
-
-
     }
 
 

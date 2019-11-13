@@ -15,9 +15,7 @@ public class ComicsRepository {
                                                       String ts,
                                                       String hash,
                                                       String apikey) {
-        return getApiService().getAllQuadrinhos(format,
-                formatType,
-                noVariants, orderBy, ts, hash, apikey);
+        return getApiService().getAllQuadrinhos(format, formatType, noVariants, orderBy, ts, hash, apikey);
     }
 }
 

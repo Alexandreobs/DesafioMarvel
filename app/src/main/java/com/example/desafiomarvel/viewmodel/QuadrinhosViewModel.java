@@ -26,9 +26,9 @@ public class QuadrinhosViewModel extends AndroidViewModel {
     private ComicsRepository comicsRepository = new ComicsRepository();
     private CompositeDisposable disposable = new CompositeDisposable();
 
-    public static final String PUBLIC_KEY = "6eb7e8896ec5850c52515a8a23ee97f0";
+    public static final String PUBLIC_KEY = "fe81c0a4bd6c7f00e3df25d68d8d8a92";
 
-    public static final String PRIVATE_KEY = "0dd0c16fedb8a02985977eafca66b49f5e6a526f";
+    public static final String PRIVATE_KEY = "ceac13aef2089eaf3c704ba9da60cf2156b60912";
 
     String ts = Long.toString(System.currentTimeMillis() / 1000);
 
@@ -53,7 +53,7 @@ public class QuadrinhosViewModel extends AndroidViewModel {
 
                         .subscribe(response -> {
 
-                            Log.i("LOG", "Success: " +response);
+                           listaComics.setValue(response.getData().getResults());
                         }, throwable -> {
 
                             Log.i("LOG", "Error: " + throwable.getMessage());

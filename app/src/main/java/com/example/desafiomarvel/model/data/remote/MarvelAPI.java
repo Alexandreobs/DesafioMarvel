@@ -16,6 +16,6 @@ public interface MarvelApi {
             @Query("orderBy") String orderBy,
             @Query("ts") String ts,
             @Query("hash") String hash,
-            @Query("apikei") String apikei
+            @Query("apikey") String apikei
     );
 }
