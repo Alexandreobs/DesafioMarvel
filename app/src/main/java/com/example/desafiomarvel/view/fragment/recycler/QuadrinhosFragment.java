@@ -4,6 +4,8 @@ package com.example.desafiomarvel.view.fragment.recycler;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,6 +17,7 @@ import android.view.ViewGroup;
 import com.example.desafiomarvel.R;
 import com.example.desafiomarvel.model.pojos.Result;
 import com.example.desafiomarvel.view.adapter.QuadrinhosAdapter;
+import com.example.desafiomarvel.view.fragment.detalhe.DetalheComicsFragment;
 import com.example.desafiomarvel.view.onclink.ComicsOnClick;
 import com.example.desafiomarvel.viewmodel.QuadrinhosViewModel;
 
@@ -30,9 +33,7 @@ public class QuadrinhosFragment extends Fragment implements ComicsOnClick {
     private QuadrinhosViewModel viewModel;
     private RecyclerView recyclerView;
     private QuadrinhosAdapter adapter;
-
-
-
+    public static final String COMICS_KEY = "comics";
 
 
     public QuadrinhosFragment() {
@@ -50,7 +51,7 @@ public class QuadrinhosFragment extends Fragment implements ComicsOnClick {
         initViews(view);
 
         recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
 
 
         viewModel.getComics();
@@ -58,7 +59,6 @@ public class QuadrinhosFragment extends Fragment implements ComicsOnClick {
             adapter.atualizaLista(results1);
 
         });
-
 
 
         return view;
@@ -73,6 +73,19 @@ public class QuadrinhosFragment extends Fragment implements ComicsOnClick {
 
     @Override
     public void comicsOnClick(Result result) {
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(COMICS_KEY, result);
 
+        Fragment detalheFragment = new DetalheComicsFragment();
+        detalheFragment.setArguments(bundle);
+        replaceFragment(detalheFragment);
     }
+
+    public void replaceFragment(Fragment fragment) {
+        FragmentManager manager = getFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.containerPrincipal, fragment);
+        transaction.commit();
+    }
+
 }

@@ -8,6 +8,8 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.desafiomarvel.model.pojos.Characters;
+import com.example.desafiomarvel.model.pojos.Quadrinhos;
 import com.example.desafiomarvel.model.pojos.Result;
 import com.example.desafiomarvel.model.repository.ComicsRepository;
 
@@ -15,6 +17,7 @@ import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
 import static com.example.desafiomarvel.util.AppUtils.md5;
@@ -45,15 +48,18 @@ public class QuadrinhosViewModel extends AndroidViewModel {
     public void getComics() {
 
         disposable.add(
-                comicsRepository.getComicsRepository("magazine", "comic", true, "focDate", ts, hash, PUBLIC_KEY)
+                comicsRepository.getComicsRepository("magazine", "comic", true, "title", ts, hash, PUBLIC_KEY)
 
                         .subscribeOn(Schedulers.newThread())
 
                         .observeOn(AndroidSchedulers.mainThread())
 
-                        .subscribe(response -> {
+                        .subscribe(new Consumer<Quadrinhos>() {
+                            @Override
+                            public void accept(Quadrinhos response) throws Exception {
 
-                           listaComics.setValue(response.getData().getResults());
+                                listaComics.setValue(response.getData().getResults());
+                            }
                         }, throwable -> {
 
                             Log.i("LOG", "Error: " + throwable.getMessage());
