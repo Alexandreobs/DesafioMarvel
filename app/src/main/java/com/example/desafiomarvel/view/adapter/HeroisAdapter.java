@@ -34,7 +34,7 @@ public class HeroisAdapter extends RecyclerView.Adapter <HeroisAdapter.ViewHolde
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        final com.example.desafiomarvel.model.pojos.herois.Result result = resultList.get(position);
+        final Result result = resultList.get(position);
         holder.onBind(result);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {

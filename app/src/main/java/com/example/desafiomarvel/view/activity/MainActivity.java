@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navView = findViewById(R.id.nav_view);
         getSupportActionBar().hide();
 
-        replaceFragment( new QuadrinhosFragment());
+        replaceFragment( new HeroisFragment());
 
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.navigation_Heroi, R.id.navigation_Quadrinhos, R.id.navigation_Autores)

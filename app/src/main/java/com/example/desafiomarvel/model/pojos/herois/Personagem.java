@@ -1,11 +1,14 @@
 
 package com.example.desafiomarvel.model.pojos.herois;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 
 
 @SuppressWarnings("unused")
-public class Personagem {
+public class Personagem implements Parcelable {
 
     @Expose
     private String attributionHTML;
@@ -21,6 +24,31 @@ public class Personagem {
     private String etag;
     @Expose
     private String status;
+
+    protected Personagem(Parcel in) {
+        attributionHTML = in.readString();
+        attributionText = in.readString();
+        if (in.readByte() == 0) {
+            code = null;
+        } else {
+            code = in.readLong();
+        }
+        copyright = in.readString();
+        etag = in.readString();
+        status = in.readString();
+    }
+
+    public static final Creator<Personagem> CREATOR = new Creator<Personagem>() {
+        @Override
+        public Personagem createFromParcel(Parcel in) {
+            return new Personagem(in);
+        }
+
+        @Override
+        public Personagem[] newArray(int size) {
+            return new Personagem[size];
+        }
+    };
 
     public String getAttributionHTML() {
         return attributionHTML;
@@ -78,4 +106,23 @@ public class Personagem {
         this.status = status;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(attributionHTML);
+        parcel.writeString(attributionText);
+        if (code == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeLong(code);
+        }
+        parcel.writeString(copyright);
+        parcel.writeString(etag);
+        parcel.writeString(status);
+    }
 }

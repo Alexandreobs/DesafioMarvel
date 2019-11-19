@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,12 +16,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.desafiomarvel.R;
 import com.example.desafiomarvel.model.pojos.herois.Result;
 import com.example.desafiomarvel.view.adapter.HeroisAdapter;
+import com.example.desafiomarvel.view.fragment.detalhe.DetalhesHeroisFragment;
 import com.example.desafiomarvel.view.onclink.PersonagemOnClick;
 import com.example.desafiomarvel.viewmodel.HeroisViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
-
 
 
 public class HeroisFragment extends Fragment implements PersonagemOnClick {
@@ -46,10 +48,10 @@ public class HeroisFragment extends Fragment implements PersonagemOnClick {
         initViews(view);
 
         recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
 
 
-        //viewModel.getPersonagens();
+        viewModel.getPersonagens();
         viewModel.getListaPersonagem().observe(this, results1 -> {
             adapter.atualizaListaP(results1);
 
@@ -67,8 +69,21 @@ public class HeroisFragment extends Fragment implements PersonagemOnClick {
 
 
     @Override
-    public void personagemOnClick(com.example.desafiomarvel.model.pojos.herois.Result result) {
+    public void personagemOnClick(Result result) {
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(HEROI_KEY, result);
 
+        Fragment detalheFragment = new DetalhesHeroisFragment();
+        detalheFragment.setArguments(bundle);
+        replaceFragment(detalheFragment);
     }
+
+    public void replaceFragment(Fragment fragment) {
+        FragmentManager manager = getFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.containerPrincipal, fragment);
+        transaction.commit();
+    }
+
 }
 

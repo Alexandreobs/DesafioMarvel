@@ -1,6 +1,7 @@
 package com.example.desafiomarvel.model.data.remote;
 
 import com.example.desafiomarvel.model.pojos.Quadrinhos.Quadrinhos;
+import com.example.desafiomarvel.model.pojos.esqcritores.Criadores;
 import com.example.desafiomarvel.model.pojos.herois.Personagem;
 
 import io.reactivex.Observable;
@@ -22,6 +23,16 @@ public interface MarvelApi {
 
     @GET ("characters?")
     Observable<Personagem> getALLPersonagens(
+
+                    @Query("orderBy") String orderBy,
+                    @Query("ts") String ts,
+                    @Query("hash") String hash,
+                    @Query("apikey") String apikey
+
+            );
+
+    @GET ("creators?")
+    Observable<Criadores> getALLCriadores(
 
             @Query("orderBy") String orderBy,
             @Query("ts") String ts,
