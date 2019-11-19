@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.desafiomarvel.R;
-import com.example.desafiomarvel.model.pojos.Result;
+import com.example.desafiomarvel.model.pojos.herois.Result;
 import com.example.desafiomarvel.view.adapter.HeroisAdapter;
 import com.example.desafiomarvel.view.onclink.PersonagemOnClick;
 import com.example.desafiomarvel.viewmodel.HeroisViewModel;
@@ -65,8 +65,9 @@ public class HeroisFragment extends Fragment implements PersonagemOnClick {
         adapter = new HeroisAdapter(results, this);
     }
 
+
     @Override
-    public void personagemOnClick(Result result) {
+    public void personagemOnClick(com.example.desafiomarvel.model.pojos.herois.Result result) {
 
     }
 }

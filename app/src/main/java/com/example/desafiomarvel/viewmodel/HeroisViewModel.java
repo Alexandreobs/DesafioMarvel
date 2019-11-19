@@ -8,8 +8,8 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.desafiomarvel.model.pojos.Characters;
-import com.example.desafiomarvel.model.pojos.Result;
+import com.example.desafiomarvel.model.pojos.herois.Personagem;
+import com.example.desafiomarvel.model.pojos.herois.Result;
 import com.example.desafiomarvel.model.repository.PersonagemRepository;
 
 import java.util.List;
@@ -45,7 +45,7 @@ public class HeroisViewModel extends AndroidViewModel {
         return this.listaPersona;
     }
 
-   /* public void getPersonagens() {
+    public void getPersonagens() {
 
         disposable.add(
                 personagemRepository.getPersonagemRepositori("name", ts, hash, PUBLIC_KEY)
@@ -54,16 +54,17 @@ public class HeroisViewModel extends AndroidViewModel {
 
                         .observeOn(AndroidSchedulers.mainThread())
 
-                        .subscribe(new Consumer<Characters>() {
+                        .subscribe(new Consumer<Personagem>() {
                             @Override
-                            public void accept(Characters resposta) throws Exception {
-                                listaPersona.setValue(resposta.);
-                            }
+                            public void accept(Personagem personagem) throws Exception {
+
+                                listaPersona.setValue(personagem.getData().getResults());
+                            }   
                         }, throwable -> {
 
                             Log.i("LOG", "Error: " + throwable.getMessage());
                         }));
-    }*/
+    }
 }
 
 

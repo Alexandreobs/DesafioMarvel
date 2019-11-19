@@ -15,7 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.desafiomarvel.R;
-import com.example.desafiomarvel.model.pojos.Result;
+import com.example.desafiomarvel.model.pojos.Quadrinhos.Result;
 import com.example.desafiomarvel.view.adapter.QuadrinhosAdapter;
 import com.example.desafiomarvel.view.fragment.detalhe.DetalheComicsFragment;
 import com.example.desafiomarvel.view.onclink.ComicsOnClick;

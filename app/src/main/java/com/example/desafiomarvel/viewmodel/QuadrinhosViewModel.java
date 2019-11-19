@@ -8,9 +8,8 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.desafiomarvel.model.pojos.Characters;
-import com.example.desafiomarvel.model.pojos.Quadrinhos;
-import com.example.desafiomarvel.model.pojos.Result;
+import com.example.desafiomarvel.model.pojos.Quadrinhos.Quadrinhos;
+import com.example.desafiomarvel.model.pojos.Quadrinhos.Result;
 import com.example.desafiomarvel.model.repository.ComicsRepository;
 
 import java.util.List;

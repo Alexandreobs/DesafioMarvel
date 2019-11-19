@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.desafiomarvel.R;
-import com.example.desafiomarvel.model.pojos.Result;
+import com.example.desafiomarvel.model.pojos.Quadrinhos.Result;
 import com.example.desafiomarvel.view.onclink.ComicsOnClick;
 import com.squareup.picasso.Picasso;
 

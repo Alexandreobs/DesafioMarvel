@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.desafiomarvel.R;
-import com.example.desafiomarvel.model.pojos.Result;
+import com.example.desafiomarvel.model.pojos.herois.Result;
 import com.example.desafiomarvel.view.onclink.PersonagemOnClick;
 import com.squareup.picasso.Picasso;
 
@@ -20,7 +20,7 @@ public class HeroisAdapter extends RecyclerView.Adapter <HeroisAdapter.ViewHolde
     private List<Result> resultList;
     private PersonagemOnClick listener;
 
-    public HeroisAdapter(List<Result> resultList, PersonagemOnClick listener) {
+    public HeroisAdapter(List<com.example.desafiomarvel.model.pojos.herois.Result> resultList, PersonagemOnClick listener) {
         this.resultList = resultList;
         this.listener = listener;
     }
@@ -34,7 +34,7 @@ public class HeroisAdapter extends RecyclerView.Adapter <HeroisAdapter.ViewHolde
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        final Result result = resultList.get(position);
+        final com.example.desafiomarvel.model.pojos.herois.Result result = resultList.get(position);
         holder.onBind(result);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -77,7 +77,7 @@ public class HeroisAdapter extends RecyclerView.Adapter <HeroisAdapter.ViewHolde
         public void onBind(Result result) {
             Picasso.get().load(result.getThumbnail().getPath() + ".jpg").into(fotoPerso);
 
-            nomePerso.setText(result.getTitle());
+            nomePerso.setText(result.getName());
 
         }
     }

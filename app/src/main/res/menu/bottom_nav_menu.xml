@@ -4,16 +4,19 @@
     <item
         android:id="@+id/navigation_Heroi"
         android:icon="@drawable/icon_homem_ferro"
+        android:iconTint="#fff"
         android:title="Herois" />
 
     <item
         android:id="@+id/navigation_Quadrinhos"
         android:icon="@drawable/livro_aberto"
+        android:iconTint="#fff"
         android:title="Quadrinho" />
 
     <item
         android:id="@+id/navigation_Autores"
         android:icon="@drawable/quadro_pessoas"
+        android:iconTint="#fff"
         android:title="Autores" />
 
 </menu>

@@ -1,6 +1,6 @@
 package com.example.desafiomarvel.model.repository;
 
-import com.example.desafiomarvel.model.pojos.Quadrinhos;
+import com.example.desafiomarvel.model.pojos.Quadrinhos.Quadrinhos;
 
 import io.reactivex.Observable;
 

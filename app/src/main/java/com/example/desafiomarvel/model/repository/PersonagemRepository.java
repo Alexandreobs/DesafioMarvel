@@ -1,6 +1,6 @@
 package com.example.desafiomarvel.model.repository;
 
-import com.example.desafiomarvel.model.pojos.Characters;
+import com.example.desafiomarvel.model.pojos.herois.Personagem;
 
 import io.reactivex.Observable;
 
@@ -8,7 +8,7 @@ import static com.example.desafiomarvel.model.data.remote.Retrofit.getApiService
 
 public class PersonagemRepository {
 
-    public Observable<Characters> getPersonagemRepositori(
+    public Observable<Personagem> getPersonagemRepositori(
 
             String orderBy,
             String ts,

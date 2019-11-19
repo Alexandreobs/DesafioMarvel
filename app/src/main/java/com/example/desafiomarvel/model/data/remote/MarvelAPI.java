@@ -1,7 +1,7 @@
 package com.example.desafiomarvel.model.data.remote;
 
-import com.example.desafiomarvel.model.pojos.Characters;
-import com.example.desafiomarvel.model.pojos.Quadrinhos;
+import com.example.desafiomarvel.model.pojos.Quadrinhos.Quadrinhos;
+import com.example.desafiomarvel.model.pojos.herois.Personagem;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
@@ -21,7 +21,7 @@ public interface MarvelApi {
     );
 
     @GET ("characters?")
-    Observable<Characters> getALLPersonagens(
+    Observable<Personagem> getALLPersonagens(
 
             @Query("orderBy") String orderBy,
             @Query("ts") String ts,
